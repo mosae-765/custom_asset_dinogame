@@ -1,6 +1,9 @@
 기본 에셋 출처: o_lobster(https://o-lobster.itch.io/), Pixel Frog(https://pixelfrog-assets.itch.io/)
+
 사용 폰트: Mona12, Tiny5
+
 클로드 코드 사용해 제작했습니다.
+
 ---
 
 # 커스텀 공룡 게임
