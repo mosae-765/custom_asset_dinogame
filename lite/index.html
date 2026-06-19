@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>커스텀 공룡 게임</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <!-- ── Start Screen ── -->
+  <div id="start-screen">
+    <div class="start-container">
+
+      <h1>커스텀 공룡 게임 lite</h1>
+
+      <div class="asset-panel">
+        <h2>커스텀 에셋 설정</h2>
+        <p class="desc">
+          게임에 사용할 PNG 이미지를 선택하세요.<br>
+          기본 에셋 출처: o_lobster, Pixel Frog
+        </p>
+
+        <div class="folder-row">
+          <button id="folder-btn" class="btn-secondary">🖼 사진 선택</button>
+          <input type="file" id="folder-input" accept=".png,.PNG" style="display:none">
+          <span id="folder-name" class="folder-name">선택된 사진 없음</span>
+        </div>
+
+        <div id="asset-status" class="asset-status"></div>
+
+        <details class="naming-guide">
+          <summary>파일 안내 사항 ▾</summary>
+          <div class="guide-grid">
+            <div class="guide-col">
+              <p class="guide-note">1. 기존 '커스텀 공룡 게임'에서 폴더를 준비할 필요 없이, 사용자가 입력한 모든 이미지를 <code>dino_run1.png</code> 로 인식하도록 수정한 버전입니다(=파일 이름 바꾸지 않아도 됩니다). <br> 최적화가 되어있지 않습니다.</p>
+            </div>
+            <div class="guide-col">
+              <p class="guide-note">2. 이미지가 가로로 과하게 길어지면 게임 진행에 어려움이 생길 수 있습니다.</p>
+            </div>
+            <div class="guide-col">
+              <p class="guide-note">3. 이미지 렌더링: 작은 이미지는 '픽셀 아트'를, 해상도가 높은 이미지는 '일반 이미지'를 추천합니다.</p>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="render-mode">
+        <span class="render-label">이미지 렌더링</span>
+        <div class="mode-toggle">
+          <button id="mode-smooth" class="mode-btn is-active">일반 이미지</button>
+          <button id="mode-pixel"  class="mode-btn">픽셀 아트</button>
+        </div>
+      </div>
+
+      <button id="play-btn" class="btn-primary">게임 시작</button>
+      <p class="hint">↑ / SPACE : 점프 &nbsp;·&nbsp; ↓ : 숙이기 &nbsp;·&nbsp; 더블 점프 가능</p>
+    </div>
+    
+  </div>
+
+  <!-- ── Game Screen ── -->
+  <div id="game-screen" style="display:none">
+    <button id="back-btn" class="btn-back">← 처음으로</button>
+    <canvas id="game-canvas"></canvas>
+    <p class="game-hint">↑ / SPACE : 점프 &nbsp;·&nbsp; ↓ : 숙이기</p>
+  </div>
+
+  <script src="assets.js"></script>
+  <script src="../game.js"></script>
+</body>
+</html>
