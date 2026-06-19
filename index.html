@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>커스텀 공룡 게임</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ── Start Screen ── -->
+  <div id="start-screen">
+    <div class="start-container">
+
+      <h1>커스텀 공룡 게임</h1>
+
+      <div class="asset-panel">
+        <h2>커스텀 에셋 설정</h2>
+        <p class="desc">
+          게임에 사용할 PNG 이미지 폴더를 선택하세요.<br>
+          공룡 외 존재하지 않는 파일은 기본 에셋이 자동으로 사용됩니다.<br>
+          기본 에셋 출처: o_lobster, Pixel Frog
+        </p>
+
+        <div class="folder-row">
+          <button id="folder-btn" class="btn-secondary">📁 폴더 선택</button>
+          <input type="file" id="folder-input" webkitdirectory accept=".png,.PNG" style="display:none">
+          <span id="folder-name" class="folder-name">선택된 폴더 없음</span>
+        </div>
+
+        <div id="asset-status" class="asset-status"></div>
+
+        <details class="naming-guide">
+          <summary>파일 안내 사항 ▾</summary>
+          <div class="guide-grid">
+            <div class="guide-col">
+              <strong>공룡 (Dino)</strong>
+              <ul>
+                <li><code>dino_run1.png</code> — 달리기 1 ★★</li>
+                <li><code>dino_run2.png</code> — 달리기 2</li>
+                <li><code>dino_jump.png</code> — 점프</li>
+                <li><code>dino_duck1.png</code> — 숙이기 1 ★ (세로 길이를 달리기 1의 0.9배 이하로)</li>
+                <li><code>dino_duck2.png</code> — 숙이기 2</li>
+                <li><code>dino_dead.png</code> — 충돌</li>
+              </ul>
+              <p class="guide-note">★★ dino_run1 : 폴더에 없는 dino_000를 해당 파일로 모두 적용합니다. 가로로 과하게 길어지면 게임 진행에 어려움이 생길 수 있습니다.<br>
+              ★ dino_duck1 : dino_duck2가 없을 시 해당 파일로 중복 적용합니다.</p>
+            </div>
+            <div class="guide-col">
+              <strong>장애물</strong>
+              <ul>
+                <li><code>cactus_s1.png</code> <em>17×35</em> — 작은 장애물</li>
+                <li><code>cactus_l1.png</code> <em>25×50</em> — 큰 장애물</li>
+                <li><code>bird1.png</code> <em>46×40</em> — 새 (날개up) ★</li>
+                <li><code>bird2.png</code> <em>46×40</em> — 새 (날개down)</li>
+              </ul>
+              <p class="guide-note">★ bird1 : bird2가 없을 시 해당 파일로 중복 적용합니다.</p>
+            </div>
+            <div class="guide-col">
+              <strong>배경/환경</strong>
+              <ul>
+                <li><code>ground.png</code> <em>임의 폭 × 24</em> — 땅</li>
+                <li><code>cloud.png</code> <em>92×28</em> — 구름</li>
+              </ul>
+              <p class="guide-note">* 꼭 해당 사이즈에 맞출 필요는 없습니다. 비율만 비슷하게 유지해주세요.<br><br>
+                ↓ 이미지 렌더링: 00X00 사이즈에 맞춘 이미지는 '픽셀 아트'를, 해상도가 높은 이미지는 '일반 이미지'를 추천합니다.</p>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="render-mode">
+        <span class="render-label">이미지 렌더링</span>
+        <div class="mode-toggle">
+          <button id="mode-smooth" class="mode-btn is-active">일반 이미지</button>
+          <button id="mode-pixel"  class="mode-btn">픽셀 아트</button>
+        </div>
+      </div>
+
+      <button id="play-btn" class="btn-primary">게임 시작</button>
+      <p class="hint">↑ / SPACE : 점프 &nbsp;·&nbsp; ↓ : 숙이기 &nbsp;·&nbsp; 더블 점프 가능</p>
+    </div>
+  </div>
+
+  <!-- ── Game Screen ── -->
+  <div id="game-screen" style="display:none">
+    <button id="back-btn" class="btn-back">← 처음으로</button>
+    <canvas id="game-canvas"></canvas>
+    <p class="game-hint">↑ / SPACE : 점프 &nbsp;·&nbsp; ↓ : 숙이기</p>
+  </div>
+
+  <script src="assets.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
